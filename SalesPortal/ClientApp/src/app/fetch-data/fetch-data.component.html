@@ -1,0 +1,35 @@
+
+<h1 id="tableLabel">Quotations</h1>
+
+<p>Below is a list of quotations.</p>
+
+<p *ngIf="!quotations"><em>Loading...</em></p>
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="searchText">
+</div>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="quotations">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Description</th>
+      <th>Product Name</th>
+      <th>Customer Name</th>
+      <th>Dealer Name</th>
+      <th>Price(EUR)</th>
+      <th>Date Of Quotation</th>
+      <th>Valid Until</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let quotation of quotations|filter:searchText">
+      <td>{{ quotation.number }}</td>
+      <td>{{ quotation.description }}</td>
+      <td>{{ quotation.productName }}</td>
+      <td>{{ quotation.customerName }}</td>
+      <td>{{ quotation.dealerName }}</td>
+      <td>{{ quotation.price }}</td>
+      <td>{{ quotation.dateOfQuotation }}</td>
+      <td>{{ quotation.validUntil }}  </td>
+    </tr>
+  </tbody>
+</table>
